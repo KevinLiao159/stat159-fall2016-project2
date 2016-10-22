@@ -1,0 +1,48 @@
+Summary of Income
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  10.35   21.01   33.12   45.22   57.47  186.60 
+Interquartile Range:[1] 36.4635
+Standard Deviation:[1] 35.24427
+Range:[1] 176.28
+ 
+Summary of Limit
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+    855    3088    4622    4736    5873   13910 
+Interquartile Range:[1] 2784.75
+Standard Deviation:[1] 2308.199
+Range:[1] 13058
+ 
+Summary of Rating
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+   93.0   247.2   344.0   354.9   437.2   982.0 
+Interquartile Range:[1] 190
+Standard Deviation:[1] 154.7241
+Range:[1] 889
+ 
+Summary of Cards
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  1.000   2.000   3.000   2.958   4.000   9.000 
+Interquartile Range:[1] 2
+Standard Deviation:[1] 1.371275
+Range:[1] 8
+ 
+Summary of Age
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  23.00   41.75   56.00   55.67   70.00   98.00 
+Interquartile Range:[1] 28.25
+Standard Deviation[1] 17.24981
+Range:[1] 75
+ 
+Summary of Education
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+   5.00   11.00   14.00   13.45   16.00   20.00 
+Interquartile Range:[1] 5
+Standard Deviation[1] 3.125207
+Range:[1] 15
+ 
+Summary of Balance
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+   0.00   68.75  459.50  520.00  863.00 1999.00 
+Interquartile Range:[1] 794.25
+Standard Deviation[1] 459.7589
+Range:[1] 1999
