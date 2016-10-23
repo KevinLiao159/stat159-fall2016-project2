@@ -1,6 +1,6 @@
 credit <- read.csv("data/Credit.csv")
 
-#Save summary statistics to eda-output.txt
+#Save quantitative variable summary statistics to eda-quantitative-output.txt
 sink("data/eda-quantitative-output.txt")
 cat("Summary of Income\n", append = TRUE)
 print(summary(credit$Income))
@@ -73,7 +73,7 @@ print(max(credit$Balance)-min(credit$Balance))
 
 sink()
 
-#Create images for histograms of variables
+#Create images for histograms of quantitative variables
 png("images/histogram-income.png")
 hist(credit$Income, breaks=10, main="Histogram of Income", xlab="Income")
 dev.off()
@@ -99,10 +99,10 @@ hist(credit$Education, breaks=10, main="Histogram of Education", xlab="Education
 dev.off()
 
 png("images/histogram-balance.png")
-hist(credit$Education, breaks=10, main="Histogram of Balance", xlab="Balance")
+hist(credit$Balance, breaks=10, main="Histogram of Balance", xlab="Balance")
 dev.off()
 
-#Create images for boxplots of variables
+#Create images for boxplots of quantitative variables
 
 png("images/boxplot-income.png")
 boxplot(credit$Income, main="Boxplot of Income", xlab="Income")
@@ -130,4 +130,13 @@ dev.off()
 
 png("images/boxplot-balance.png")
 boxplot(credit$Education, main="Boxplot of Balance", xlab="Balance")
+dev.off()
+
+#Save correlation matrix as RData
+corr_matrix <- cor(credit[, c(2:7,12)])
+save(corr_matrix, file = 'data/correlation-matrix.RData')
+
+#Create image for scatterplot matrix
+png("images/scatterplot-matrix.png")
+pairs(credit[,c(2:7,12)])
 dev.off()
