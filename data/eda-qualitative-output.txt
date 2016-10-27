@@ -1,19 +1,31 @@
-Gender
-               Male   Female
-Count      193.0000 207.0000
-Proportion   0.4825   0.5175
+Gender 
+       Count Proportion
+ Male    193     0.4825
+Female   207     0.5175
  
-Student
-              No  Yes
-Count      360.0 40.0
-Proportion   0.9  0.1
+Ethnicity 
+                 Count Proportion
+African American    99     0.2475
+Asian              102     0.2550
+Caucasian          199     0.4975
  
-Married
-                 No      Yes
-Count      155.0000 245.0000
-Proportion   0.3875   0.6125
+Student 
+    Count Proportion
+No    360        0.9
+Yes    40        0.1
  
-Ethnicity
-           African American   Asian Caucasian
-Count               99.0000 102.000  199.0000
-Proportion           0.2475   0.255    0.4975
+Married 
+    Count Proportion
+No    155     0.3875
+Yes   245     0.6125
+ 
+ 
+Anova's between Balance and all the qualitative variables
+             Df   Sum Sq Mean Sq F value   Pr(>F)    
+Gender        1    38892   38892   0.195    0.659    
+Ethnicity     2    19639    9819   0.049    0.952    
+Student       1  5655026 5655026  28.346 1.71e-07 ***
+Married       1    24239   24239   0.121    0.728    
+Residuals   394 78602117  199498                     
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1

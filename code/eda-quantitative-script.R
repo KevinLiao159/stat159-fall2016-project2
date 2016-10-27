@@ -1,82 +1,42 @@
+# load data into working environment
 credit <- read.csv("data/Credit.csv")
+credit <- credit[, -1]
 
-#Save quantitative variable summary statistics to eda-quantitative-output.txt
+# Compute and save quantitative variable summary statistics to eda-quantitative-output.txt
+# Minimum, Maximum, Range
+# Median, First and Third quartiles, and interquartile range (IQR)
+# Mean and Standard Deviation
+
+# Use for loop to save statistics above for all quantitative variables 
+# Quantitative variables: Income, Limit, Rating, Cards, Age, Education, Balance
 sink("data/eda-quantitative-output.txt")
-cat("Summary of Income\n", append = TRUE)
-print(summary(credit$Income))
-cat("Interquartile Range:", append = TRUE)
-print(IQR(credit$Income)[[1]])
-cat("Standard Deviation:", append = TRUE)
-print(sd(credit$Income))
-cat("Range:", append = TRUE)
-print(max(credit$Income)-min(credit$Income))
-
-cat(" \n", append = TRUE)
-cat("Summary of Limit\n", append = TRUE)
-print(summary(credit$Limit))
-cat("Interquartile Range:", append = TRUE)
-print(IQR(credit$Limit)[[1]])
-cat("Standard Deviation:", append = TRUE)
-print(sd(credit$Limit))
-cat("Range:", append = TRUE)
-print(max(credit$Limit)-min(credit$Limit))
-
-cat(" \n", append = TRUE)
-cat("Summary of Rating\n", append = TRUE)
-print(summary(credit$Rating))
-cat("Interquartile Range:", append = TRUE)
-print(IQR(credit$Rating)[[1]])
-cat("Standard Deviation:", append = TRUE)
-print(sd(credit$Rating))
-cat("Range:", append = TRUE)
-print(max(credit$Rating)-min(credit$Rating))
-
-cat(" \n", append = TRUE)
-cat("Summary of Cards\n", append = TRUE)
-print(summary(credit$Cards))
-cat("Interquartile Range:", append = TRUE)
-print(IQR(credit$Cards)[[1]])
-cat("Standard Deviation:", append = TRUE)
-print(sd(credit$Cards))
-cat("Range:", append = TRUE)
-print(max(credit$Cards)-min(credit$Cards))
-
-cat(" \n", append = TRUE)
-cat("Summary of Age\n", append = TRUE)
-print(summary(credit$Age))
-cat("Interquartile Range:", append = TRUE)
-print(IQR(credit$Age)[[1]])
-cat("Standard Deviation", append = TRUE)
-print(sd(credit$Age))
-cat("Range:", append = TRUE)
-print(max(credit$Age)-min(credit$Age))
-
-cat(" \n", append = TRUE)
-cat("Summary of Education\n", append = TRUE)
-print(summary(credit$Education))
-cat("Interquartile Range:", append = TRUE)
-print(IQR(credit$Education)[[1]])
-cat("Standard Deviation", append = TRUE)
-print(sd(credit$Education))
-cat("Range:", append = TRUE)
-print(max(credit$Education)-min(credit$Education))
-
-cat(" \n", append = TRUE)
-cat("Summary of Balance\n", append = TRUE)
-print(summary(credit$Balance))
-cat("Interquartile Range:", append = TRUE)
-print(IQR(credit$Balance)[[1]])
-cat("Standard Deviation", append = TRUE)
-print(sd(credit$Balance))
-cat("Range:", append = TRUE)
-print(max(credit$Balance)-min(credit$Balance))
-
+for (quant_var in c("Income", "Limit", "Rating", "Cards", "Age", "Education", "Balance")) {
+  cat(c("Summary Statistics of", quant_var, "\n"), append = TRUE)
+  cat(c("Summary of", quant_var, "\n"), append = TRUE)
+  print(summary(credit[quant_var]))
+  cat(c("Range:", max(credit[quant_var]) - min(credit[quant_var]), "\n"), append = TRUE)
+  cat(c("Interquartile Range:", IQR(unlist(credit[quant_var])), "\n"), append = TRUE)
+  cat(c("Mean:", mean(unlist(credit[quant_var])), "\n"), append = TRUE)
+  cat(c("Standard Deviation:", sd(unlist(credit[quant_var])), "\n"), append = TRUE)
+  cat(" \n", append = TRUE)
+}
 sink()
 
-#Create images for histograms of quantitative variables
+
+# Create and save histograms and boxplots of all quantitative variables in PNG format
+# Use for loop to create and save histogram and boxplot of each quantitative variable
+for (quant_var in c("Income", "Limit", "Rating", "Cards", "Age", "Education", "Balance")) {
+  png(paste0("images/histogram-", quant_var, ".png"))
+  hist(unlist(credit[quant_var]), breaks=10, main = c("Histogram of Income", xlab = quant_var)
+  
+}
+
+
+
 png("images/histogram-income.png")
 hist(credit$Income, breaks=10, main="Histogram of Income", xlab="Income")
 dev.off()
+
 
 png("images/histogram-limit.png")
 hist(credit$Limit, breaks=10, main="Histogram of Limit", xlab="Limit")

@@ -1,48 +1,98 @@
-Summary of Income
-   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-  10.35   21.01   33.12   45.22   57.47  186.60 
-Interquartile Range:[1] 36.4635
-Standard Deviation:[1] 35.24427
-Range:[1] 176.28
+Summary Statistics of Income 
+Summary of Income 
+     Income      
+ Min.   : 10.35  
+ 1st Qu.: 21.01  
+ Median : 33.12  
+ Mean   : 45.22  
+ 3rd Qu.: 57.47  
+ Max.   :186.63  
+Range: 176.28 
+Interquartile Range: 36.4635 
+Mean: 45.218885 
+Standard Deviation: 35.2442731650705 
  
-Summary of Limit
-   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-    855    3088    4622    4736    5873   13910 
-Interquartile Range:[1] 2784.75
-Standard Deviation:[1] 2308.199
-Range:[1] 13058
+Summary Statistics of Limit 
+Summary of Limit 
+     Limit      
+ Min.   :  855  
+ 1st Qu.: 3088  
+ Median : 4622  
+ Mean   : 4736  
+ 3rd Qu.: 5873  
+ Max.   :13913  
+Range: 13058 
+Interquartile Range: 2784.75 
+Mean: 4735.6 
+Standard Deviation: 2308.19884754314 
  
-Summary of Rating
-   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-   93.0   247.2   344.0   354.9   437.2   982.0 
-Interquartile Range:[1] 190
-Standard Deviation:[1] 154.7241
-Range:[1] 889
+Summary Statistics of Rating 
+Summary of Rating 
+     Rating     
+ Min.   : 93.0  
+ 1st Qu.:247.2  
+ Median :344.0  
+ Mean   :354.9  
+ 3rd Qu.:437.2  
+ Max.   :982.0  
+Range: 889 
+Interquartile Range: 190 
+Mean: 354.94 
+Standard Deviation: 154.724142591749 
  
-Summary of Cards
-   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-  1.000   2.000   3.000   2.958   4.000   9.000 
-Interquartile Range:[1] 2
-Standard Deviation:[1] 1.371275
-Range:[1] 8
+Summary Statistics of Cards 
+Summary of Cards 
+     Cards      
+ Min.   :1.000  
+ 1st Qu.:2.000  
+ Median :3.000  
+ Mean   :2.958  
+ 3rd Qu.:4.000  
+ Max.   :9.000  
+Range: 8 
+Interquartile Range: 2 
+Mean: 2.9575 
+Standard Deviation: 1.37127485824035 
  
-Summary of Age
-   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-  23.00   41.75   56.00   55.67   70.00   98.00 
-Interquartile Range:[1] 28.25
-Standard Deviation[1] 17.24981
-Range:[1] 75
+Summary Statistics of Age 
+Summary of Age 
+      Age       
+ Min.   :23.00  
+ 1st Qu.:41.75  
+ Median :56.00  
+ Mean   :55.67  
+ 3rd Qu.:70.00  
+ Max.   :98.00  
+Range: 75 
+Interquartile Range: 28.25 
+Mean: 55.6675 
+Standard Deviation: 17.2498067622027 
  
-Summary of Education
-   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-   5.00   11.00   14.00   13.45   16.00   20.00 
-Interquartile Range:[1] 5
-Standard Deviation[1] 3.125207
-Range:[1] 15
+Summary Statistics of Education 
+Summary of Education 
+   Education    
+ Min.   : 5.00  
+ 1st Qu.:11.00  
+ Median :14.00  
+ Mean   :13.45  
+ 3rd Qu.:16.00  
+ Max.   :20.00  
+Range: 15 
+Interquartile Range: 5 
+Mean: 13.45 
+Standard Deviation: 3.12520676007734 
  
-Summary of Balance
-   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-   0.00   68.75  459.50  520.00  863.00 1999.00 
-Interquartile Range:[1] 794.25
-Standard Deviation[1] 459.7589
-Range:[1] 1999
+Summary Statistics of Balance 
+Summary of Balance 
+    Balance       
+ Min.   :   0.00  
+ 1st Qu.:  68.75  
+ Median : 459.50  
+ Mean   : 520.01  
+ 3rd Qu.: 863.00  
+ Max.   :1999.00  
+Range: 1999 
+Interquartile Range: 794.25 
+Mean: 520.015 
+Standard Deviation: 459.758877389383 
+ 
