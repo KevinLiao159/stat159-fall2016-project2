@@ -41,7 +41,7 @@ for (quant_var in c("Income", "Limit", "Rating", "Cards", "Age", "Education", "B
 corr_matrix <- cor(credit[, c(1 : 6, 11)])
 save(corr_matrix, file = "data/correlation-matrix.RData")
 
-# Create image for scatterplot matrix
+# Create image for scatterplot matrix ??
 png("images/scatterplot-matrix.png")
 pairs(credit[,c(1 : 6, 11)])
 dev.off()
