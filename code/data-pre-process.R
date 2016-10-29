@@ -32,7 +32,7 @@ save(train, test, file = "data/train-and-test-set.RData")
 
 
 # playing
-credit[train,]
+credit[train, ]
 
 lm(Balance ~ ., data = credit, subset = train)
 
@@ -48,7 +48,7 @@ sum(is.na(x_matrix))
 
 # ridge gression
 grid =10 ^ seq (10, -2, length = 100)
-ridge.model = glmnet(x_matrix, y_vector, alpha = 0, lambda =grid)
+ridge.model = glmnet(x_matrix[train, ], y_vector[train], alpha = 0, lambda =grid)
 model_coef = coef(ridge.model)
 head(model_coef)
 # 11 features + 1 intercept for 100 lambdas
@@ -64,21 +64,38 @@ dim(coef(ridge.model)[ -1 ,50])
 sqrt(sum(coef(ridge.model)[-1 ,50]^2) )
 # see coefficient when lambda = s
 predict(ridge.model, s = 50, type = "coefficients")
-# check mse against test 
+# check mse against test for lambda = s
 source("code/functions/mse-function.R")
-pred = predict(ridge.model, s = 44, newx = x_matrix[test, ]) 
+pred = predict(ridge.model, s = 4, newx = x_matrix[test, ]) 
 mse(pred, y_vector[test])
 
 # non penalized fit (regression)
 lm1 <- lm(Balance ~ ., data = credit, subset = train)
 summary(lm1)
 predict(ridge.model, s=0, exact =T, type="coefficients")
-
+# check mse against testing set 
+lm.pred <- predict.lm(lm1, newdata = credit[test, -11])
+mse(lm.pred, y_vector[test])
+ridge.pred <- predict(ridge.model, s = 0, newx = x_matrix[test ,])
+mse(ridge.pred, y_vector[test])
 
 # cross-validation
-set.seed (1)
+set.seed(1)
 cv.out = cv.glmnet(x_matrix[train, ], y_vector[train], alpha = 0)
 plot(cv.out)
 bestlam =cv.out$lambda.min
 bestlam
+
+# check mse against test for lambda the best 
+ridge.pred=predict(ridge.model, s = bestlam, newx = x_matrix[test ,])
+mse(ridge.pred, y_vector[test])
+
+# Refit ridge regression using best lambda and see its coef
+refit.rid.ml <- glmnet(x_matrix, y_vector, alpha = 0, lambda = bestlam)
+predict(refit.rid.ml, type = "coefficients")
+
+#Done
+
+# PCA
+
 
