@@ -25,7 +25,7 @@ index <- 1 : nrow(credit)
 set.seed(1)
 train <- sample(index, size = 300, replace = FALSE)
 # The rest of 100 values for testing set
-test <- setdiff(index, train_i)
+test <- setdiff(index, train)
 
 # Save the train and test vectors in 
 save(train, test, file = "data/train-and-test-set.RData")
@@ -40,20 +40,45 @@ lm(Balance ~ ., data = credit, subset = train)
 summary(lm(Balance ~ ., data = credit, subset = train))
 
 library(glmnet)
-x_matrix = model.matrix(Balance ~ ., data = credit)
+x_matrix = model.matrix(Balance ~ ., data = credit)[, -1]
 y_vector = credit$Balance
+
+sum(is.na(y_vector))
+sum(is.na(x_matrix))
+
+# ridge gression
 grid =10 ^ seq (10, -2, length = 100)
 ridge.model = glmnet(x_matrix, y_vector, alpha = 0, lambda =grid)
-check = coef(ridge.model)
-head(check)
-dim(check)
-coef(ridge.model)[,50]
+model_coef = coef(ridge.model)
+head(model_coef)
+# 11 features + 1 intercept for 100 lambdas
+dim(model_coef)
+# coef for the 50th lambda
+grid[50]
 ridge.model$lambda[50]
+coef(ridge.model)[,50]
+model_coef[,50]
+# ell2 norm (size of penalty; measure distance of β from zero)
 coef(ridge.model)[ -1 ,50]
 dim(coef(ridge.model)[ -1 ,50])
-# coefficient
+sqrt(sum(coef(ridge.model)[-1 ,50]^2) )
+# see coefficient when lambda = s
 predict(ridge.model, s = 50, type = "coefficients")
+# check mse against test 
+source("code/functions/mse-function.R")
+pred = predict(ridge.model, s = 44, newx = x_matrix[test, ]) 
+mse(pred, y_vector[test])
+
+# non penalized fit (regression)
+lm1 <- lm(Balance ~ ., data = credit, subset = train)
+summary(lm1)
+predict(ridge.model, s=0, exact =T, type="coefficients")
 
 
-
+# cross-validation
+set.seed (1)
+cv.out = cv.glmnet(x_matrix[train, ], y_vector[train], alpha = 0)
+plot(cv.out)
+bestlam =cv.out$lambda.min
+bestlam
 
