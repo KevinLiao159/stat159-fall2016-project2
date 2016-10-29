@@ -20,16 +20,39 @@ write.csv(scaled_credit, file = "data/scaled-credit.csv")
 
 # Training and Testing Sets
 # Create an index vector
-index <- 1 : 400
+index <- 1 : nrow(credit)
 # Sample 300 values for trainning with no replacement
 set.seed(1)
-train_i <- sample(index, size = 300, replace = FALSE)
+train <- sample(index, size = 300, replace = FALSE)
 # The rest of 100 values for testing set
-testing_i <- setdiff(index, train_i)
+test <- setdiff(index, train_i)
 
 # Save the train and test vectors in 
-save(train_i, testing_i , file = "data/train-and-test-set.RData")
+save(train, test, file = "data/train-and-test-set.RData")
 
+
+# playing
+credit[train,]
+
+lm(Balance ~ ., data = credit, subset = train)
+
+
+summary(lm(Balance ~ ., data = credit, subset = train))
+
+library(glmnet)
+x_matrix = model.matrix(Balance ~ ., data = credit)
+y_vector = credit$Balance
+grid =10 ^ seq (10, -2, length = 100)
+ridge.model = glmnet(x_matrix, y_vector, alpha = 0, lambda =grid)
+check = coef(ridge.model)
+head(check)
+dim(check)
+coef(ridge.model)[,50]
+ridge.model$lambda[50]
+coef(ridge.model)[ -1 ,50]
+dim(coef(ridge.model)[ -1 ,50])
+# coefficient
+predict(ridge.model, s = 50, type = "coefficients")
 
 
 
