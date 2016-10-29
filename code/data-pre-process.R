@@ -18,6 +18,18 @@ scaled_credit <- scale(new_credit, center = TRUE, scale = TRUE)
 write.csv(scaled_credit, file = "data/scaled-credit.csv")
 
 
+# Training and Testing Sets
+# Create an index vector
+index <- 1 : 400
+# Sample 300 values for trainning with no replacement
+set.seed(1)
+train_i <- sample(index, size = 300, replace = FALSE)
+# The rest of 100 values for testing set
+testing_i <- setdiff(index, train_i)
+
+# Save the train and test vectors in 
+save(train_i, testing_i , file = "data/train-and-test-set.RData")
+
 
 
 
