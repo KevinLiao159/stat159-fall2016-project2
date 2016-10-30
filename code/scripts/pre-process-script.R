@@ -1,4 +1,4 @@
-# load data into working environment
+# load credit data into working environment
 credit <- read.csv("data/Credit.csv")
 credit <- credit[, -1]
 
@@ -15,7 +15,7 @@ new_credit <- cbind(temp_credit[ ,-1], Balance = credit$Balance)
 scaled_credit <- scale(new_credit, center = TRUE, scale = TRUE)
 
 # export scaled data
-write.csv(scaled_credit, file = "data/scaled-credit.csv")
+write.csv(scaled_credit, file = "data/scaled-credit.csv", row.names = FALSE)
 
 
 # Training and Testing Sets
@@ -27,8 +27,8 @@ train <- sample(index, size = 300, replace = FALSE)
 # The rest of 100 values for testing set
 test <- setdiff(index, train)
 
-# Save the train and test vectors in 
-save(train, test, file = "data/train-and-test-set.RData")
+# Save the train, test vectors, and scaled_credit in a binary file
+save(train, test, scaled_credit, file = "data/train-and-test-set.RData")
 
 
 
