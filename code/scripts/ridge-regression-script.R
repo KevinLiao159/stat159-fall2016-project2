@@ -59,3 +59,8 @@ cat("\n", append = TRUE)
 cat("Official coefficients from best model", "\n", append = TRUE)
 ridge_coef
 sink()
+
+# Save the plot of cross-validation errors in terms of the tunning parameter
+png("./images/ridge-cv-lambda.png")
+plot(ridge_cv)
+dev.off()
