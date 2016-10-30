@@ -123,4 +123,7 @@ set.seed(1)
 pcr.pred = predict(pcr.fit, x_matrix[test, ], ncomp = 10)
 mse(pcr.pred, y_vector[test])
 
+# refit the PCR
+pcr.fit=pcr(Balance ~., data = credit, scale =TRUE, ncomp = 10)
+summary(pcr.fit)
 
