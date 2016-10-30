@@ -1,0 +1,27 @@
+Results of multiple linear regression model via Ordinary Least Square 
+Summary of multiple linear regression model 
+
+Call:
+lm(formula = Balance ~ ., data = credit)
+
+[1] 400  11
+      Income       Limit      Rating       Cards        Age  Education GenderFemale StudentYes
+1 -0.8605053 -0.48938591 -0.46495653 -0.69825535 -1.2561010 -0.7839481   -1.0343392 -0.3329164
+2  1.7252765  0.82722509  0.82766657  0.03099306  1.5265388  0.4959672    0.9643839  2.9962477
+3  1.6846458  1.01351753  1.02802315  0.76024146  0.8888505 -0.7839481   -1.0343392 -0.3329164
+4  2.9424671  2.06585321  2.10736343  0.03099306 -1.1401577 -0.7839481    0.9643839 -0.3329164
+5  0.3025489  0.06992465  0.01331402 -0.69825535  0.7149355  0.8159460   -1.0343392 -0.3329164
+6  0.9919658  1.43462510  1.38349450  0.76024146  1.2366805 -1.1039270   -1.0343392 -0.3329164
+  MarriedYes EthnicityAsian EthnicityCaucasian
+1   0.794400     -0.5843168          1.0037555
+2   0.794400      1.7071218         -0.9937679
+3  -1.255665      1.7071218         -0.9937679
+4  -1.255665      1.7071218         -0.9937679
+5   0.794400     -0.5843168          1.0037555
+6  -1.255665     -0.5843168          1.0037555
+dual standard error: 98.79 on 388 degrees of freedom
+Multiple R-squared:  0.9551,	Adjusted R-squared:  0.9538 
+F-statistic: 750.3 on 11 and 388 DF,  p-value: < 2.2e-16
+
+MSE of multiple linear regression model 
+9466.825
