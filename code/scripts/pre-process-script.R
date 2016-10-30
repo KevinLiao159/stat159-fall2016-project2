@@ -7,7 +7,7 @@ credit <- credit[, -1]
 temp_credit <- model.matrix(Balance ~ ., data = credit)
 
 # removing column of ones, and appending Balance
-new_credit <- cbind(temp_credit[ ,-1], Balance = credit$Balance)
+new_credit <- cbind(temp_credit[ , -1], Balance = credit$Balance)
 
 
 # (b) Mean Centering and Standardizing
@@ -15,7 +15,7 @@ new_credit <- cbind(temp_credit[ ,-1], Balance = credit$Balance)
 scaled_credit <- scale(new_credit, center = TRUE, scale = TRUE)
 
 # export scaled data
-write.csv(scaled_credit, file = "data/scaled-credit.csv")
+write.csv(scaled_credit, file = "data/scaled-credit.csv", row.names = FALSE)
 
 
 # Training and Testing Sets
@@ -27,9 +27,9 @@ train <- sample(index, size = 300, replace = FALSE)
 # The rest of 100 values for testing set
 test <- setdiff(index, train)
 
-# Save the train and test vectors in 
-save(train, test, file = "data/train-and-test-set.RData")
-
+# Save the train, test vectors, and scaled_credit in a binary file
+save(train, test, scaled_credit, file = "data/train-and-test-set.RData")
+load("data/train-and-test-set.RData")
 
 
 
