@@ -31,6 +31,11 @@ test <- setdiff(index, train)
 save(train, test, file = "data/train-and-test-set.RData")
 
 
+# 
+x_matrix <- scaled_credit[, 1:11]
+y_vector <- scaled_credit[,12]
+
+
 # playing
 credit[train, ]
 
@@ -89,6 +94,7 @@ bestlam
 # check mse against test for lambda the best 
 ridge.pred=predict(ridge.model, s = bestlam, newx = x_matrix[test ,])
 mse(ridge.pred, y_vector[test])
+# ????????? much larger
 
 # Refit ridge regression using best lambda and see its coef
 refit.rid.ml <- glmnet(x_matrix, y_vector, alpha = 0, lambda = bestlam)
@@ -97,5 +103,24 @@ predict(refit.rid.ml, type = "coefficients")
 #Done
 
 # PCA
+library(pls)
+# fit PCR
+set.seed(1)
+pcr.fit = pcr(Balance ~ ., data = credit, subset = train, scale = TRUE, validation ="CV")
+# ?????????? not same 
+pcr.fit = pcr(Balance ~ ., data = credit[train, ], scale = TRUE, validation ="CV")
+summary(pcr.fit)
+# Notice CV score = root MSE
+
+# Plot MSE for CV and find the lowest M
+validationplot(pcr.fit, val.type = "MSEP")
+which(min(pcr.fit$validation$PRESS))
+min(pcr.fit$validation$PRESS)
+pcr.fit$validation$PRESS
+# M = 10
+# check mse against test for # of components
+set.seed(1)
+pcr.pred = predict(pcr.fit, x_matrix[test, ], ncomp = 10)
+mse(pcr.pred, y_vector[test])
 
 
