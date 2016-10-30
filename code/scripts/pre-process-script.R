@@ -29,7 +29,7 @@ test <- setdiff(index, train)
 
 # Save the train, test vectors, and scaled_credit in a binary file
 save(train, test, scaled_credit, file = "data/train-and-test-set.RData")
-load("data/train-and-test-set.RData")
+
 
 
 
