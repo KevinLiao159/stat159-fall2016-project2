@@ -1,4 +1,4 @@
-# Load train and test set into working environment
+# Load train, test set, and sca into working environment
 load("data/train-and-test-set.RData")
 
 
