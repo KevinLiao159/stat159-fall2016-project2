@@ -31,9 +31,11 @@ test <- setdiff(index, train)
 save(train, test, file = "data/train-and-test-set.RData")
 
 
+
+
 # 
-x_matrix <- scaled_credit[, 1:11]
-y_vector <- scaled_credit[,12]
+x_matrix <- scaled_credit[, -ncol(scaled_credit)]
+y_vector <- scaled_credit[, ncol(scaled_credit)]
 
 
 # playing
