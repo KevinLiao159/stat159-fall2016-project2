@@ -2,6 +2,7 @@
 load("data/train-and-test-set.RData")
 
 # Split scaled_credit into predictors matrix and Balance vector
+###first column
 x_matrix <- scaled_credit[, -ncol(scaled_credit)]
 y_vector <- scaled_credit[, ncol(scaled_credit)]
 
@@ -33,15 +34,16 @@ plsr_test_mse <- mse(plsr_pred, y_vector[test])
 plsr_test_mse
 
 # Refit the model on the full data set using the best ncomp and get official coefficients
+###as dataframe or matrix
 plsr_model <- plsr(y_vector ~ x_matrix, scale = FALSE, ncomp = plsr_bestncomp)
 plsr_coef <- coef(plsr_model)
 plsr_coef
+
 
 # Save cv output model, the best ncomp, test MSE, best model, 
 # and official coefficients in a binary file
 save(plsr_cv, plsr_bestncomp, plsr_test_mse, plsr_model, plsr_coef, 
      file = "data/PLSR.RData")
-
 
 # Save cv output model, the best ncomp, test MSE, best model, 
 # and official coefficients in text file
@@ -56,7 +58,8 @@ cat("Official coefficients from best model", "\n", append = TRUE)
 plsr_coef
 sink()
 
-# Save the plot of cross-validation errors in terms of the tunning parameter
+# Save the plot of cross-validation errors in terms of the tuning parameter
+###add titles
 png("./images/plsr-cv-ncomp.png")
 validationplot(plsr_cv, val.type = "MSEP")
 dev.off()
