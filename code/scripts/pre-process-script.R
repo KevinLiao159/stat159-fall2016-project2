@@ -1,4 +1,4 @@
-# load data into working environment
+# load credit data into working environment
 credit <- read.csv("data/Credit.csv")
 credit <- credit[, -1]
 
