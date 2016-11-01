@@ -1,0 +1,21 @@
+Results of Principal Components Regression 
+The best number of principal components from 10-fold cross validation: 5 
+
+Test Mean Square Error from best model: 0.04657528 
+
+Official coefficients from best model 
+, , 5 comps
+
+                       y_vector
+Income             -0.598799860
+Limit               0.675511371
+Rating              0.666478811
+Cards               0.040549351
+Age                -0.022952183
+Education          -0.005819678
+GenderFemale       -0.011762386
+StudentYes          0.276519838
+MarriedYes         -0.011222253
+EthnicityAsian      0.018715763
+EthnicityCaucasian  0.012570418
+
