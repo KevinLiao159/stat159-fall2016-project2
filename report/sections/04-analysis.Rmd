@@ -1,0 +1,56 @@
+---
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Analysis
+
+```{r, echo=FALSE}
+# load data and library
+options(warn = -1)
+library(xtable)
+library(png)
+library(grid)
+
+# load data in our working environment 
+load('../../data/ols-regression.RData')
+load('../../data/ridge-regression.RData')
+load('../../data/lasso-regression.RData')
+load('../../data/PCR.RData')
+load('../../data/PLSR.RData')
+
+# load our functions
+source("../../code/functions/mse-function.R")
+```
+
+
+```{r, echo=FALSE}
+# Extract coefficients and convert them into vectors
+osl_coef_vector <- osl_coef[1:12]
+ridge_coef_vector <- unlist(ridge_coef)[1:12]
+lasso_coef_vector <- unlist(lasso_coef)[1:12]
+pcr_coef_vector <- c(0, pcr_coef[1:11])
+plsr_coef_vector <- c(0, plsr_coef[1:11])
+
+# Create a table of regression coefficients for all methods
+table_coef <- data.frame("OSL" = osl_coef_vector, "ridege" = ridge_coef_vector, 
+                         "lasso" = lasso_coef_vector, "PCR" = pcr_coef_vector,
+                         "PLSR" = plsr_coef_vector)
+rownames(table_coef) <- rownames(ridge_coef)
+
+```
+
+
+
+```{r, echo=FALSE, results='asis'}
+xtable_coef = xtable(table_coef, caption = 'Table of Regression Coefficients for All Methods')
+print(xtable_coef, comment=FALSE, type = "latex", caption.placement = 'top')
+```
+
+
+
+
+

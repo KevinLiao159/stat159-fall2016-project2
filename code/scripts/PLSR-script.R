@@ -24,6 +24,7 @@ min(plsr_cv$validation$PRESS)
 plsr_bestncomp <- match(min(plsr_cv$validation$PRESS), plsr_cv$validation$PRESS)
 plsr_bestncomp
 
+
 # Use the test set to compute the test Mean Square Error (test MSE)
 set.seed(1)
 plsr_pred <- predict(plsr_cv, x_matrix[test, ], ncomp = plsr_bestncomp)
@@ -33,10 +34,11 @@ plsr_test_mse <- mse(plsr_pred, y_vector[test])
 plsr_test_mse
 
 # Refit the model on the full data set using the best ncomp and get official coefficients
-plsr_model <- plsr(y_vector ~ x_matrix, scale = FALSE, ncomp = plsr_bestncomp)
+plsr_model <- plsr(y_vector ~ x_matrix, scale = FALSE, ncomp = 5)
 plsr_coef <- coef(plsr_model)
 plsr_coef
-
+summary(plsr_model)
+coef(plsr_model)
 
 # Save cv output model, the best ncomp, test MSE, best model, 
 # and official coefficients in a binary file
