@@ -1,20 +1,20 @@
 Results of lasso regression 
-The best lambda from 10-fold cross validation: 0.001595245 
+The best lambda from 10-fold cross validation: 0.01 
 
-Test Mean Square Error from best model: 0.04620253 
+Test Mean Square Error from best model: 0.04675534 
 
 Official coefficients from best model 
 12 x 1 sparse Matrix of class "dgCMatrix"
-                             s0
-(Intercept)         .          
-Income             -0.590935718
-Limit               1.015070146
-Rating              0.318289256
-Cards               0.054285097
-Age                -0.022009463
-Education          -0.006217981
-GenderFemale       -0.009719799
-StudentYes          0.276718172
-MarriedYes         -0.006790646
-EthnicityAsian      0.011559025
-EthnicityCaucasian  0.007077066
+                            s0
+(Intercept)         .         
+Income             -0.55166063
+Limit               0.92504680
+Rating              0.36787493
+Cards               0.04499772
+Age                -0.01666003
+Education           .         
+GenderFemale        .         
+StudentYes          0.26681304
+MarriedYes          .         
+EthnicityAsian      .         
+EthnicityCaucasian  .         

@@ -1,5 +1,5 @@
 # Load train, test set, and sca into working environment
-load("data/train-and-test-set.RData")
+load("../../data/train-and-test-set.RData")
 
 # Split scaled_credit into predictors matrix and Balance vector
 x_matrix <- scaled_credit[, -ncol(scaled_credit)]
@@ -20,18 +20,18 @@ ridge_cv <- cv.glmnet(x_matrix[train, ], y_vector[train], alpha = 0,
                      lambda = grid, intercept = FALSE, standardize = FALSE)
 
 # Plot the cross-validation errors in terms of the tunning parameter
-ridge_cv_plot <- plot(ridge_cv)
-ridge_cv_plot
+plot(ridge_cv)
+
 
 # Find the lambda for the best model
 ridge_bestlam <- ridge_cv$lambda.min
 ridge_bestlam
 
 # Use the test set to compute the test Mean Square Error (test MSE)
-ridge_pred <- predict(ridge_cv, s = ridge_bestlam, newx = x_matrix[test ,], 
+ridge_pred <- predict(ridge_cv, s = ridge_bestlam, newx = x_matrix[test, ], 
                       intercept = FALSE, standardize = FALSE)
 # Load mse function
-source("code/functions/mse-function.R")
+source("../functions/mse-function.R")
 ridge_test_mse <- mse(ridge_pred, y_vector[test])
 ridge_test_mse
 
@@ -45,12 +45,12 @@ ridge_coef
 # Save cv output model, best lambda, test MSE, best model, 
 # and official coefficients in a binary file
 save(ridge_cv, ridge_bestlam, ridge_test_mse, ridge_model, ridge_coef, 
-     file = "data/ridge-regression.RData")
+     file = "../../data/ridge-regression.RData")
 
 
 # Save cv output model, best lambda, test MSE, best model, 
 # and official coefficients in text file
-sink("data/ridge-regression-output.txt")
+sink("../../data/ridge-regression-output.txt")
 cat("Results of ridge regression", "\n")
 cat("The best lambda from 10-fold cross validation:", ridge_bestlam, "\n", append = TRUE)
 cat("\n", append = TRUE)
@@ -61,6 +61,6 @@ ridge_coef
 sink()
 
 # Save the plot of cross-validation errors in terms of the tunning parameter
-png("./images/ridge-cv-lambda.png")
+png("../../images/ridge-cv-lambda.png")
 plot(ridge_cv)
 dev.off()
