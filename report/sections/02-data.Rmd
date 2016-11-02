@@ -1,0 +1,13 @@
+---
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Data
+
+Data was obtained by downloading the *Credit* dataset made available by Gareth James on his website based on the related textbook, "An Introduction to Statistical Learning" by James et al. It contains the data `Balance`, credit card balances for a few hundred individuals, as well as data on several predictors associated with the individual. These variables include `Age`, `Cards` (number of credit cards), `Education` (number of years of education), `Income`, `Limit` (credit limit), `Rating` (credit rating), `Gender`, `Student` (student status), `Status` (marital status), and `Ethnicity`. `Gender`, `Student`, `Status`, and `Ethnicity` are qualitative variables, while the others are quantitative variables. 
+
+

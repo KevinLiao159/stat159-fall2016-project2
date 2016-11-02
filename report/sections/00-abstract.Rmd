@@ -1,0 +1,12 @@
+---
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Abstract
+
+This report applies predictive modeling techiques to find the relationship between credit card balance and various factors. Specifically, we use ridge regression, lasso regression, principal components regression, and partial least squares regression on credit card data to find the best fitting model to make accurate predictons on credit card balance.
+
