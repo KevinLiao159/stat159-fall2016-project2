@@ -26,31 +26,124 @@ load('../../data/PLSR.RData')
 source("../../code/functions/mse-function.R")
 ```
 
+# OSL
+First, let's look at our benchmark - OSL regression. We use full set of data that is mean centering and standardizing to fit the OSL model. OSL model will be served as our benchmark for comparison with later four different methods. So we calculate OSL model's MSE, which is equal to `r I(osl_mse)` 
 
-```{r, echo=FALSE}
-# Extract coefficients and convert them into vectors
-osl_coef_vector <- osl_coef[1:12]
-ridge_coef_vector <- unlist(ridge_coef)[1:12]
-lasso_coef_vector <- unlist(lasso_coef)[1:12]
-pcr_coef_vector <- c(0, pcr_coef[1:11])
-plsr_coef_vector <- c(0, plsr_coef[1:11])
-
-# Create a table of regression coefficients for all methods
-table_coef <- data.frame("OSL" = osl_coef_vector, "ridege" = ridge_coef_vector, 
-                         "lasso" = lasso_coef_vector, "PCR" = pcr_coef_vector,
-                         "PLSR" = plsr_coef_vector)
-rownames(table_coef) <- rownames(ridge_coef)
-
-```
-
-
-
+Here is more information about OSL regression:
 ```{r, echo=FALSE, results='asis'}
-xtable_coef = xtable(table_coef, caption = 'Table of Regression Coefficients for All Methods')
-print(xtable_coef, comment=FALSE, type = "latex", caption.placement = 'top')
+xtable_summary <- xtable(osl_summary, 
+                         caption = 'Summary Table of OSL Regression')
+print(xtable_summary, comment=FALSE, type = "latex", caption.placement = 'top')
+```
+
+Table 1 exhibits estimates of all coefficients and their corresponding t-test and p-value.
+
+From above information, we can conclude that predictors such as *Income*, *Limit*, *Rating*, *Cards*, and *Student* are extremely significant.
+
+# Ridge Regression
+Next, let's look at ridge regression. We load mean centerized and standardized data before the analysis. 
+Here are the steps:
+1. Check mission value in data for both train and test set
+2. Initialize lambda and use random seeds (set.seed()) for cross-validation
+3. Use train set to conduct 10-fold cross-validation to find out the best tuning parameter
+
+Let's look at plot of the cross-validation errors in terms of the tunning parameter
+<div style="width:100px; height=80px">
+![Figure 1: the cross-validation errors in terms of the tunning parameter](../../images/ridge-cv-lambda.png)
+</div>
+Figure 1: The cross-validation errors in terms of the tunning parameter
+
+4. Find the $\lambda$ for the best model: best $\lambda = `r I(ridge_bestlam)`$
+5. Use the test set to compute the test Mean Square Error: test MSE = `r I(ridge_test_mse)`
+6. Refit the model on the full data set using the best lambda and get official coefficients.
+
+\vspace{40mm}
+
+Here is the official coefficient table:
+```{r, echo=FALSE, results='asis'}
+xtable_ridge_coef<- xtable(as.matrix(ridge_coef), 
+                         caption = 'Coefficient Table of Ridge Regression')
+print(xtable_ridge_coef, comment=FALSE, type = "latex", caption.placement = 'top')
+
+```
+
+# Lasso Regression
+Next, let's look at lasso regression. We load mean centerized and standardized data before the analysis. 
+Here are the steps:
+1. Check mission value in data for both train and test set
+2. Initialize lambda and use random seeds (set.seed()) for cross-validation
+3. Use train set to conduct 10-fold cross-validation to find out the best tuning parameter
+
+Let's look at plot of the cross-validation errors in terms of the tunning parameter
+<div style="width:50px; height=30px">
+![Figure 2: the cross-validation errors in terms of the tunning parameter](../../images/lasso-cv-lambda.png)
+</div>
+Figure 2: The cross-validation errors in terms of the tunning parameter
+
+4. Find the $\lambda$ for the best model: best $\lambda = `r I(lasso_bestlam)`$
+5. Use the test set to compute the test Mean Square Error: test MSE = `r I(lasso_test_mse)`
+6. Refit the model on the full data set using the best lambda and get official coefficients.
+
+\vspace{40mm}
+
+Here is the official coefficient table:
+```{r, echo=FALSE, results='asis'}
+xtable_lasso_coef<- xtable(as.matrix(lasso_coef), 
+                         caption = 'Coefficient Table of Lasso Regression')
+print(xtable_lasso_coef, comment=FALSE, type = "latex", caption.placement = 'top')
 ```
 
 
+# Principal Component Regression (PCR)
+Next, let's look at PCR. We load mean centerized and standardized data before the analysis. 
+Here are the steps:
+1. Check mission value in data for both train and test set
+2. Use random seeds (set.seed()) for cross-validation
+3. Use train set to conduct 10-fold cross-validation to find out the best number of principal components used
+
+Let's look at plot of the cross-validation errors in terms of the number of principal components used
+<div style="width:50px; height=30px">
+![Figure 3: the cross-validation errors in terms of the number of principal components used](../../images/pcr-cv-ncomp.png)
+</div>
+Figure 3: The cross-validation errors in terms of the number of principal components used
+
+4. Find the number of principal components considered for the best model: M = `r I(pcr_bestncomp)`
+5. Use the test set to compute the test Mean Square Error: test MSE = `r I(pcr_test_mse)`
+6. Refit the model on the full data set using M = `r I(pcr_bestncomp)`and get official coefficients.
+
+\vspace{40mm}
+
+Here is the official coefficient table:
+```{r, echo=FALSE, results='asis'}
+xtable_pcr_coef<- xtable(as.data.frame(pcr_coef), 
+                         caption = 'Coefficient Table of PCR')
+print(xtable_pcr_coef, comment=FALSE, type = "latex", caption.placement = 'top')
+```
+
+# Partial Least Squares Regression (PLSR)
+Next, let's look at PLSR. We load mean centerized and standardized data before the analysis. 
+Here are the steps:
+1. Check mission value in data for both train and test set
+2. Use random seeds (set.seed()) for cross-validation
+3. Use train set to conduct 10-fold cross-validation to find out the best number of partial least squares directions
+
+Let's look at plot of the cross-validation errors in terms of the number of partial least squares directions
+<div style="width:50px; height=30px">
+![Figure 4: the cross-validation errors in terms of the number of principal components used](../../images/plsr-cv-ncomp.png)
+</div>
+Figure 4: The cross-validation errors in terms of the number of partial least squares directions
 
 
+4. Find the number of partial least squares directions for the best model: M = `r I(plsr_bestncomp)`
+5. Use the test set to compute the test Mean Square Error: test MSE = `r I(plsr_test_mse)`
+6. Refit the model on the full data set using M = `r I(plsr_bestncomp)`and get official coefficients.
+
+\vspace{40mm}
+
+Here is the official coefficient table:
+```{r, echo=FALSE, results='asis'}
+xtable_plsr_coef<- xtable(as.data.frame(plsr_coef), 
+                         caption = 'Coefficient Table of PLSR')
+print(xtable_plsr_coef, comment=FALSE, type = "latex", caption.placement = 'top')
+```
 
