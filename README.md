@@ -108,14 +108,16 @@ stat159-fall2016-project2/
 
 ### Structure of the paper
 
-> * 0. Abstract - 
-> * 1. Introduction
-> * 2. Data
-> * 3. Methods
-> * 4. Analysis
-> * 5. Results
-> * 6. Conclusions
+> * 0. Abstract - provide basic information of the project
+> * 1. Introduction - provide the objective of the project
+> * 2. Data - explain the source and use of our raw data
+> * 3. Methods - OSL, ridge, lasso, PCR, PLSR
+> * 4. Analysis - train and test models for each method
+> * 5. Results - display findings of the project
+> * 6. Conclusions - draw conclusion from the research results
 > * References
+
+### How to r
 
 ### LICENSE
 

@@ -89,11 +89,11 @@ plsr: code/scripts/$(plsr) $(clean_data) $(mse)
 # run all five types of regressions
 # ------------------------------------------------------------------------------------------
 regressions:
-    make ols
-    make ridge
-    make lasso
-    make pcr
-    make plsr
+	make ols
+	make ridge
+	make lasso
+	make pcr
+	make plsr
 
 
 # ------------------------------------------------------------------------------------------
