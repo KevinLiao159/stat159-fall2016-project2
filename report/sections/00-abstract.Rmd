@@ -1,6 +1,8 @@
 ---
 title: "Predictive Modeling on Credit Data"
 author: "Kevin Liao and Thomas Sun"
+header-includes:
+   - \usepackage{float}
 output: pdf_document
 ---
 

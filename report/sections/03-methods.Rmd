@@ -60,9 +60,3 @@ For principal components regression, the method tries to reduce the dimensions $
 Lastly, partial least squares, also a dimension reduction method, tries to find $Z_1$, ..., $Z_{M}$ that approximate the original dimensions like PCR, but also tries to find new features related to the response $Balance$. The tuning parameter, the number of $M$ directions, is the same as well. The $M$ that is associated with the smalled mean squared error will be selected for the model.
 
 Once all of the best models are identified, the test set will be used to compute the MSEs of each, and find which model performs best. The best model will finally be used on the full `Credit` data set to find official coefficients.
-
-
-
-
-
-
