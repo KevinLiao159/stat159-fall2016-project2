@@ -4,7 +4,7 @@ credit = data/Credit.csv
 quant = eda-quantitative-script.R
 qual = qualitative-script.R
 mse = code/functions/mse-function.R
-clean_data = data/data/train-and-test-set.RData
+clean_data = data/train-and-test-set.RData
 ols = ols-regression-script.R
 ridge = ridge-regression-script.R
 lasso = lasso-regression-script.R
@@ -94,16 +94,16 @@ regressions: ols ridge lasso pcr plsr
 # ------------------------------------------------------------------------------------------
 # generate Rmd and PDF report
 # ------------------------------------------------------------------------------------------
-report: $(md) $(clean_data) $(mse)
-	cat $(md) > report/report.Rmd
-	cd report && Rscript -e 'library(rmarkdown); render("report.Rmd")'
+report: $(sections) $(clean_data) $(mse)
+	cat $(sections) > report/report.Rmd
+
 
 
 # ------------------------------------------------------------------------------------------
-# generate slides.html
+# Rmd to HTML slides
 # ------------------------------------------------------------------------------------------
-
-
+slides: $(clean_data) $(mse)
+	cd slides && Rscript -e 'library(rmarkdown); render("predictive-modeling-slides.Rmd")'
 
 
 # ------------------------------------------------------------------------------------------
