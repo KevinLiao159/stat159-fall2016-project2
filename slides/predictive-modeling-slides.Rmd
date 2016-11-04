@@ -1,0 +1,188 @@
+---
+title: "Predictive Modeling on Credit Data"
+author: "Kevin Liao, Thomas Sun"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Background
+
+- Predictive modeling techniques can be used to make accurate prediction about a response given some inputs.
+- We want to find out how to predict credit card balance given various facts about an individual.
+
+## Data {.smaller}
+
+- **Credit** dataset
+- 400 observations
+- Data on credit card balance and 10 predictors: 
+    - age
+    - number of credit cards
+    - years of education
+    - income
+    - credit limit
+    - credit rating 
+    - gender
+    - student status
+    - marital status
+    - ethnicity
+
+## Goal
+- Use different regression techiques and find the best fitting model to most accurately predict the credit card balance of an individual. 
+- Which of these 10 variables are useful in predicting balance?
+
+## Methods
+- Ordinary least squares model may have issues of high variance and thus poor prediction accuracy. It may also be hard to interpret since it does not remove irrelevant variables.
+- We use four different regression techniques in addition to OLS that may improve on prediction accuracy and interpretability.
+    - Ridge regression (RR)
+    - Lasso regression (LR)
+    - Principal components regression (PCR)
+    - Partial least squares regression (PLSR)
+
+## Methods
+- Assume linear relationship between predictors and response
+$$
+\begin{aligned}
+Credit_i = \beta_0 + \beta_1X_i + \beta_2X_i + \ldots + \beta_{10}X_i + \epsilon_i
+\end{aligned}
+$$
+- Where $\beta_0$ is the intercept and $\beta_1$, ..., $\beta_{10}$ are the regression coefficients for their associated predictor, and $\epsilon$ is the error term. 
+
+## Methods - OLS
+- OLS tries estimate the coefficients by minimizing residual sum of squares (RSS).
+$$
+\begin{aligned}
+RSS = \sum_{i=1}^{n} (y_i - \beta_0 - \sum_{j=1}^{p} \beta_jx_{ij})^2
+\end{aligned}
+$$
+- We use OLS as a benchmark for the other techniques.
+
+## Methods - Ridge and Lasso
+- Known as shrinkage methods, ridge and lasso minimize respectively
+$$
+\begin{aligned}
+RSS + \lambda \sum_{j=1}^{p} \beta_j^2
+\end{aligned}
+$$
+$$
+\begin{aligned}
+RSS + \lambda \sum_{j=1}^{p} |\beta_j|
+\end{aligned}
+$$
+- Both include shrinkage penalty. As $\lambda$ grows larger, coefficients shrink. Lasso can shrink coefficients to exactly zero while ridge cannot.
+- Find the $\lambda$ that minimizes mean squared error in model.
+
+## Methods - PCR and PLSR
+- Known as dimension reduction methods
+- Mitigates overfitting
+- PCR tries to explain similar groups of predictor variables using a number of components less than the original number of predictors.
+- PLSR tries to do the same except also considers the relation to the response.
+- Find the number of components $M$ that minimizes mean squared error in model.
+
+## Results
+
+```{r, echo=FALSE, results='asis', message=FALSE}
+# Load data and library
+options(warn = -1)
+library(knitr)
+library(png)
+library(grid)
+library(ggplot2)
+library(reshape2)
+
+# Load data in our working environment 
+load('../data/ols-regression.RData')
+load('../data/ridge-regression.RData')
+load('../data/lasso-regression.RData')
+load('../data/PCR.RData')
+load('../data/PLSR.RData')
+
+# Load our functions
+source("../code/functions/mse-function.R")
+
+# Extract coefficients and convert them into vectors
+osl_coef_vector <- osl_coef[1:12]
+ridge_coef_vector <- unlist(ridge_coef)[1:12]
+lasso_coef_vector <- unlist(lasso_coef)[1:12]
+pcr_coef_vector <- c(0, pcr_coef[1:11])
+plsr_coef_vector <- c(0, plsr_coef[1:11])
+
+# Create a table of regression coefficients for all methods
+table_coef <- data.frame("OLS" = osl_coef_vector, "Ridge" = ridge_coef_vector, 
+                         "Lasso" = lasso_coef_vector, "PCR" = pcr_coef_vector,
+                         "PLSR" = plsr_coef_vector)
+rownames(table_coef) <- rownames(ridge_coef)
+
+# Print coefficient table
+kable_coef_cont<- kable(table_coef[2:7, 1:ncol(table_coef)], 
+                         caption = 'Coefficient Table of Regression Models',
+                         digits = 3)
+print(kable_coef_cont, caption.placement = 'top')
+```
+
+## Results
+
+```{r, echo=FALSE, results='asis', message=FALSE}
+# Print coefficient table continued
+kable_coef_cont<- kable(table_coef[8:nrow(table_coef), 1:ncol(table_coef)], 
+                         caption = 'Coefficient Table of Regression Models (cont.)',
+                         digits = 3)
+print(kable_coef_cont, caption.placement = 'top')
+```
+
+## Results
+```{r, echo=FALSE, results='asis', message=FALSE}
+# Create a new dataframe for coefficient in order to plot 
+plot_table_coef <- cbind(data.frame("Predictors" = rownames(table_coef)), table_coef)
+rownames(plot_table_coef) <- NULL
+
+# Reshape our dataframe in order to plot multiple lines
+plot_table_coef <- melt(plot_table_coef, id.vars = "Predictors" , value.name= "value", variable.name= "Methods")
+
+# Use ggplot to acchieve multiple lines plot
+ggplot(plot_table_coef, aes(x = Predictors, y=value, group = Methods, colour = Methods)) +
+    geom_line() +
+    geom_point(size = 4, shape = 21, fill = "white") +
+    ggtitle("Official Coefficients Comparison") + theme_bw() + 
+    theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+
+## Results
+```{r, echo=FALSE, results='asis', message=FALSE}
+# Create table of test MSE
+table_mse <- data.frame("Ridge" = ridge_test_mse,
+                        "Rasso" = lasso_test_mse,
+                        "PCR" = pcr_test_mse,
+                        "PLSR" = plsr_test_mse)
+rownames(table_mse) <- "MSE Value"
+
+# Print table of test MSE
+kable_table_mse <- kable(table_mse,
+                         caption = "Mean squared errors of each model",
+                         digits = 5)
+print(kable_table_mse, caption.placement="top")
+```
+
+
+\
+Our tests find that ridge regression has the lowest MSE.
+
+Thus, we consider ridge regression as our best performing model and use it for our official coefficients.
+
+## Conclusions
+- Strong predictors of credit balance include
+    - Income (`r round(ridge_coef[2], 2)`)
+    - Credit Limit (`r round(ridge_coef[3], 2)`)
+    - Credit Rating (`r round(ridge_coef[4], 2)`)
+    - Student Status (`r round(ridge_coef[9], 2)`)
+- Meanwhile, number of cards, age, education, gender, marital status, and ethnicity are relatively weak predictors.
+- All four regression models have competitive MSEs, but ridge regression has the smallest.
+- Low MSE implies our predictions should be quite accurate.
+
+
+
+
+
+
