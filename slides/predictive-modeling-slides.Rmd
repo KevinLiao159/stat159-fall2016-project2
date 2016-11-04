@@ -91,6 +91,7 @@ library(png)
 library(grid)
 library(ggplot2)
 library(reshape2)
+library(methods)
 
 # Load data in our working environment 
 load('../data/ols-regression.RData')
