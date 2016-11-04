@@ -1,0 +1,95 @@
+Session Information
+
+R version 3.2.2 (2015-08-14)
+Platform: x86_64-apple-darwin13.4.0 (64-bit)
+Running under: OS X 10.12.1 (unknown)
+
+locale:
+[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+
+attached base packages:
+[1] stats     graphics  grDevices utils     datasets  base     
+
+other attached packages:
+[1] ggplot2_2.1.0   xtable_1.8-2    rmarkdown_0.8.1 knitr_1.11     
+[5] devtools_1.12.0
+
+loaded via a namespace (and not attached):
+ [1] colorspace_1.2-6 scales_0.3.0     plyr_1.8.3       htmltools_0.3.5 
+ [5] tools_3.2.2      withr_1.0.2      gtable_0.1.2     Rcpp_0.12.2     
+ [9] memoise_1.0.0    grid_3.2.2       methods_3.2.2    digest_0.6.8    
+[13] munsell_0.4.2   
+ setting  value                       
+ version  R version 3.2.2 (2015-08-14)
+ system   x86_64, darwin13.4.0        
+ ui       X11                         
+ language (EN)                        
+ collate  en_US.UTF-8                 
+ tz       America/Los_Angeles         
+ date     2016-11-03                  
+
+ package    * version date       source        
+ colorspace   1.2-6   2015-03-11 CRAN (R 3.2.0)
+ devtools   * 1.12.0  2016-06-24 CRAN (R 3.2.5)
+ digest       0.6.8   2014-12-31 CRAN (R 3.2.0)
+ ggplot2    * 2.1.0   2016-03-01 CRAN (R 3.2.4)
+ gtable       0.1.2   2012-12-05 CRAN (R 3.2.0)
+ htmltools    0.3.5   2016-03-21 CRAN (R 3.2.4)
+ knitr      * 1.11    2015-08-14 CRAN (R 3.2.2)
+ memoise      1.0.0   2016-01-29 CRAN (R 3.2.3)
+ munsell      0.4.2   2013-07-11 CRAN (R 3.2.0)
+ plyr         1.8.3   2015-06-12 CRAN (R 3.2.0)
+ Rcpp         0.12.2  2015-11-15 CRAN (R 3.2.2)
+ rmarkdown  * 0.8.1   2015-10-10 CRAN (R 3.2.2)
+ scales       0.3.0   2015-08-25 CRAN (R 3.2.0)
+ withr        1.0.2   2016-06-20 CRAN (R 3.2.5)
+ xtable     * 1.8-2   2016-02-05 CRAN (R 3.2.3)
+Session Information
+
+R version 3.2.2 (2015-08-14)
+Platform: x86_64-apple-darwin13.4.0 (64-bit)
+Running under: OS X 10.12.1 (unknown)
+
+locale:
+[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+
+attached base packages:
+[1] stats     graphics  grDevices utils     datasets  base     
+
+other attached packages:
+[1] ggplot2_2.1.0   xtable_1.8-2    rmarkdown_0.8.1 knitr_1.11     
+[5] devtools_1.12.0
+
+loaded via a namespace (and not attached):
+ [1] colorspace_1.2-6 scales_0.3.0     plyr_1.8.3       htmltools_0.3.5 
+ [5] tools_3.2.2      withr_1.0.2      gtable_0.1.2     Rcpp_0.12.2     
+ [9] memoise_1.0.0    grid_3.2.2       methods_3.2.2    digest_0.6.8    
+[13] munsell_0.4.2   
+ setting  value                       
+ version  R version 3.2.2 (2015-08-14)
+ system   x86_64, darwin13.4.0        
+ ui       X11                         
+ language (EN)                        
+ collate  en_US.UTF-8                 
+ tz       America/Los_Angeles         
+ date     2016-11-03                  
+
+ package    * version date       source        
+ colorspace   1.2-6   2015-03-11 CRAN (R 3.2.0)
+ devtools   * 1.12.0  2016-06-24 CRAN (R 3.2.5)
+ digest       0.6.8   2014-12-31 CRAN (R 3.2.0)
+ ggplot2    * 2.1.0   2016-03-01 CRAN (R 3.2.4)
+ gtable       0.1.2   2012-12-05 CRAN (R 3.2.0)
+ htmltools    0.3.5   2016-03-21 CRAN (R 3.2.4)
+ knitr      * 1.11    2015-08-14 CRAN (R 3.2.2)
+ memoise      1.0.0   2016-01-29 CRAN (R 3.2.3)
+ munsell      0.4.2   2013-07-11 CRAN (R 3.2.0)
+ plyr         1.8.3   2015-06-12 CRAN (R 3.2.0)
+ Rcpp         0.12.2  2015-11-15 CRAN (R 3.2.2)
+ rmarkdown  * 0.8.1   2015-10-10 CRAN (R 3.2.2)
+ scales       0.3.0   2015-08-25 CRAN (R 3.2.0)
+ withr        1.0.2   2016-06-20 CRAN (R 3.2.5)
+ xtable     * 1.8-2   2016-02-05 CRAN (R 3.2.3)
+[1] 0
+[1] 0
+[1] 0

@@ -110,7 +110,7 @@ report: $(md) $(clean_data) $(mse)
 # generate session-info.txt
 # ------------------------------------------------------------------------------------------
 session-info: code/scripts/session-info-script.R
-	cd code/scripts/ && session-info-script.R
+	cd code/scripts/ && Rscript session-info-script.R
 	
 
 # ------------------------------------------------------------------------------------------
