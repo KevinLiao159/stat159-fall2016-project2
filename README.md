@@ -26,18 +26,71 @@ stat159-fall2016-project2/
    session-info.txt
    .gitignore
    code/
+      README.md
+      test-that.R
       functions/
-         ...
+         mse-function.R
       scripts/
-         ...
+         eda-qualitative-script.R
+         eda-quantitative-script.R
+         pre-process-script.R
+         ols-regression-script.R
+         ridge-regression-script.R
+         lasso-regression-script.R
+         PCR-script.R
+         PLSR-script.R
+         session-info.R
       tests/
-         ...
+         test-mse.R
    data/
+      README.md
       Credit.csv
-      ...
+      eda-qualitative-output.txt
+      eda-quantitative-output.txt
+      correlation-matrix.RData
+      scaled-credit.csv
+      train-and-test-set.RData
+      ols-regression-output.txt
+      ols-regression.RData
+      ridge-regression-output.txt
+      ridge-regression.RData
+      lasso-regression-output.txt
+      lasso-regression.RData
+      PCR-output.txt
+      PCR.RData
+      PLSR-output.txt
+      PLSR.RData
    images/
-      ...
+      README.md
+      barchart-Ethnicity.png
+      barchart-gender.png
+      barchart-married.png
+      barchart-student.png
+      boxplot-age.png
+      boxplot-balance-ethnicity.png
+      boxplot-balance-gender.png
+      boxplot-balance-married.png
+      boxplot-balance-student.png
+      boxplot-balance.png
+      boxplot-cards.png
+      boxplot-education.png
+      boxplot-income.png
+      boxplot-limit.png
+      boxplot-rating.png
+      histogram-age.png
+      histogram-balance.png
+      histogram-cards.png
+      histogram-education.png
+      histogram-income.png
+      histogram-limit.png
+      histogram-rating.png
+      ridge-cv-lambda.png
+      lasso-cv-lambda.png
+      pcr-cv-ncomp.png
+      plsr-cv-ncomp.png
+      scatterplot-matrix.png
    report/
+      README.md
       report.pdf
       report.Rmd
       sections/
@@ -49,12 +102,13 @@ stat159-fall2016-project2/
          05-results.Rmd
          06-conclusions.Rmd
    slides/
-      ...
+      predictive-modeling-slides.Rmd
+      predictive-modeling-slides.html
 ```
 
 ### Structure of the paper
 
-> * 0. Abstract
+> * 0. Abstract - 
 > * 1. Introduction
 > * 2. Data
 > * 3. Methods
