@@ -2,7 +2,7 @@
 # Variables
 credit = data/Credit.csv
 quant = eda-quantitative-script.R
-qual = qualitative-script.R
+qual = eda-qualitative-script.R
 mse = code/functions/mse-function.R
 clean_data = data/train-and-test-set.RData
 ols = ols-regression-script.R
@@ -60,7 +60,7 @@ ols: code/scripts/$(ols) $(clean_data) $(mse)
 # ------------------------------------------------------------------------------------------
 # run ridge regression
 # ------------------------------------------------------------------------------------------
-ridge: code/scripts/$(ridge) $(clean_data) $(mse)
+ridge: code/scripts/$(ridge) $(clean_data) $(mse) 
 	cd code/scripts && Rscript $(ridge)
 
 
@@ -113,7 +113,6 @@ session:
 	bash session.sh
 
 	
-
 # ------------------------------------------------------------------------------------------
 # clean the target
 # ------------------------------------------------------------------------------------------

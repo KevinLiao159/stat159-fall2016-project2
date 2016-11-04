@@ -9,6 +9,7 @@ y_vector <- scaled_credit[, ncol(scaled_credit)]
 sum(is.na(y_vector))
 sum(is.na(x_matrix))
 
+library(methods)
 library(pls)
 # Fit PLSR on the train set using ten-fold cross-validation
 set.seed(1)

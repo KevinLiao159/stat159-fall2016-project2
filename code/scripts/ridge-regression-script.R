@@ -9,7 +9,7 @@ y_vector <- scaled_credit[, ncol(scaled_credit)]
 sum(is.na(y_vector))
 sum(is.na(x_matrix))
 
-
+library(methods)
 library(glmnet)
 # Initialize grid for lambda
 grid <- 10 ^ seq (10, -2, length = 100)
