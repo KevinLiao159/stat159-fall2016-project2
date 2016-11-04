@@ -162,11 +162,13 @@ the following is a complete list of make commands for phony targets:
 ### REFERENCES
 James, Gareth, Daniela Witten, Trevor Hastie, and Robert Tibshirani. An Introduction to Statistical Learning: With Applications in R. New York: Springer, 2013. Print.
 
-### LICENSE
-
+### License additonal info 
 All media content (e.g. report/report, and images) licensed under Creative Commons Attribution-ShareAlike 4.0 International License.
 
 All code licensed under Apache License 2.0
+
+
+### LICENSE
 
 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
 
