@@ -16,7 +16,17 @@ Course website: [gastonsanchez.com/stat159](http://gastonsanchez.com/stat159)
 
 ### File Structure
 
-The file-structure for the project is as follows:
+The main directories of this repository are:
+* `data`, which stores the original data set `Credit.csv`, the mean centralized and scaled data set `scaled-credit.csv` and some other RData output from our analysis
+* `Code`, which holds the codes for all analysis/computations and containes three main directories: 
+   * functions, which contains generic functions used in scripts
+   * scripts, which is the main folder for all data process and model analysis
+   * tests, which holds unit tests for output comparison
+* `images`, which stores the graphic output including histogram, boxplot, correlation matrix and barcharts etc.
+* `report`, which is sectioned into 7 parts and produces the official project report and analysis
+* `slides`, which adds on additional feature to the project and complements the materials in the report for a formal presentation
+
+The complete file-structure for the project is as follows:
 
 ```
 stat159-fall2016-project2/
@@ -117,7 +127,40 @@ stat159-fall2016-project2/
 > * 6. Conclusions - draw conclusion from the research results
 > * References
 
-### How to r
+### How to reproduce the project
+The objective of the project is to practice how to use different methods to do model selection based on given data set. 
+
+If you want to reproduce the results represented in this project (images, dataset, report etc), one simply clone the repository (download zip file) and run the make file with command
+> make
+
+If you would like to reproduce a specific part of the project (e.g. regressions), run the corresponding command line in the terminal
+> make regressions
+
+If you would like to reproduce the report, run the corresponding command line in the terminal
+> make report
+
+If you would like to remove the report, run the following command line
+> make clean
+
+the following is a complete list of make commands for phony targets:
+* make all 
+* make data 
+* make tests 
+* make eda 
+* make pre 
+* make ols 
+* make ridge 
+* make lasso 
+* make pcr 
+* make plsr 
+* make regressions 
+* make report 
+* make slides 
+* make session 
+* make clean
+
+### REFERENCES
+James, Gareth, Daniela Witten, Trevor Hastie, and Robert Tibshirani. An Introduction to Statistical Learning: With Applications in R. New York: Springer, 2013. Print.
 
 ### LICENSE
 
