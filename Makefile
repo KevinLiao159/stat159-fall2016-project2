@@ -88,7 +88,12 @@ plsr: code/scripts/$(plsr) $(clean_data) $(mse)
 # ------------------------------------------------------------------------------------------
 # run all five types of regressions
 # ------------------------------------------------------------------------------------------
-regressions: ols ridge lasso pcr plsr
+regressions:
+    make ols
+    make ridge
+    make lasso
+    make pcr
+    make plsr
 
 
 # ------------------------------------------------------------------------------------------
