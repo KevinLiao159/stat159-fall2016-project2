@@ -7,6 +7,8 @@ options(warn = -1)
 library(xtable)
 library(png)
 library(grid)
+library(Matrix)
+library(methods)
 
 # load data in our working environment 
 load('../data/ols-regression.RData')
