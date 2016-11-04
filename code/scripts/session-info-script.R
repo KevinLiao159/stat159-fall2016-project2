@@ -4,12 +4,11 @@ library(knitr)
 library(rmarkdown)
 library(xtable)
 library(ggplot2)
-sink("../../session-info.txt")
-system("git --version")
-system("latex --version")
-system("pandoc --version")
+
+
+sink("../../session-info.txt", append = TRUE)
 cat("Session Information\n\n")
 print(sessionInfo())
-print(devtools::session_info(), "\n")
+devtools::session_info()
 sink()
 
