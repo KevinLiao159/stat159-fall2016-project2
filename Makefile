@@ -96,7 +96,7 @@ regressions: ols ridge lasso pcr plsr
 # ------------------------------------------------------------------------------------------
 report: $(sections) $(clean_data) $(mse)
 	cat $(sections) > report/report.Rmd
-
+	cd report && Rscript -e 'library(rmarkdown); render("report.Rmd","pdf_document")'
 
 
 # ------------------------------------------------------------------------------------------
