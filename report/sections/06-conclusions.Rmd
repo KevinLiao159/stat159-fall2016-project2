@@ -1,10 +1,3 @@
----
-output: pdf_document
----
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
 
 ## Conclusions
 After we explore the credit data, we are interested in learning relationship of Balance and the other 10 predictors. First, we have fitted a OLS model upon all of 10 predictors in credit data so that we could get more insight about the information hidden behind the data. And the summary statistics served as our benchmark. Next step is model selection. We will pick the best models according to test Mean Square Error. Two shrinkage methods (ridge regression and lasso regression) and two dimension reduction methods (principal component regression and partial least square regression). When we conducted our analysis, we would like to see test MSE improve each time. However, the test MSE from all 5 different methods are competitive with each other. Ridge regression method acchieved the lowest test MSE and is considered the best model among the other four methods. 

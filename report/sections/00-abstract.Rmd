@@ -1,4 +1,6 @@
 ---
+title: "Predictive Modeling on Credit Data"
+author: "Kevin Liao and Thomas Sun"
 output: pdf_document
 ---
 

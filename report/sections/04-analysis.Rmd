@@ -1,10 +1,3 @@
----
-output: pdf_document
----
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
 
 ## Analysis
 
@@ -16,18 +9,19 @@ library(png)
 library(grid)
 
 # load data in our working environment 
-load('../../data/ols-regression.RData')
-load('../../data/ridge-regression.RData')
-load('../../data/lasso-regression.RData')
-load('../../data/PCR.RData')
-load('../../data/PLSR.RData')
+load('../data/ols-regression.RData')
+load('../data/ridge-regression.RData')
+load('../data/lasso-regression.RData')
+load('../data/PCR.RData')
+load('../data/PLSR.RData')
 
 # load our functions
-source("../../code/functions/mse-function.R")
+source("../code/functions/mse-function.R")
 ```
 
-# OSL
-First, let's look at our benchmark - OSL regression. We use full set of data that is mean centering and standardizing to fit the OSL model. OSL model will be served as our benchmark for comparison with later four different methods. So we calculate OSL model's MSE, which is equal to `r I(osl_mse)` 
+# OLS
+First, let's look at our benchmark - OLS regression. We use full set of data that is mean centering and standardizing to fit the OSL model. OSL model will be served as our benchmark for comparison with later four different methods. So we calculate OSL model's MSE, which is equal to `r I(osl_mse)` 
+\vspace{40mm}
 
 Here is more information about OSL regression:
 ```{r, echo=FALSE, results='asis'}
@@ -49,7 +43,7 @@ Here are the steps:
 
 Let's look at plot of the cross-validation errors in terms of the tunning parameter
 <div style="width:100px; height=80px">
-![Figure 1: the cross-validation errors in terms of the tunning parameter](../../images/ridge-cv-lambda.png)
+![Figure 1: the cross-validation errors in terms of the tunning parameter](../images/ridge-cv-lambda.png)
 </div>
 Figure 1: The cross-validation errors in terms of the tunning parameter
 
@@ -76,7 +70,7 @@ Here are the steps:
 
 Let's look at plot of the cross-validation errors in terms of the tunning parameter
 <div style="width:50px; height=30px">
-![Figure 2: the cross-validation errors in terms of the tunning parameter](../../images/lasso-cv-lambda.png)
+![Figure 2: the cross-validation errors in terms of the tunning parameter](../images/lasso-cv-lambda.png)
 </div>
 Figure 2: The cross-validation errors in terms of the tunning parameter
 
@@ -103,7 +97,7 @@ Here are the steps:
 
 Let's look at plot of the cross-validation errors in terms of the number of principal components used
 <div style="width:50px; height=30px">
-![Figure 3: the cross-validation errors in terms of the number of principal components used](../../images/pcr-cv-ncomp.png)
+![Figure 3: the cross-validation errors in terms of the number of principal components used](../images/pcr-cv-ncomp.png)
 </div>
 Figure 3: The cross-validation errors in terms of the number of principal components used
 
@@ -129,7 +123,7 @@ Here are the steps:
 
 Let's look at plot of the cross-validation errors in terms of the number of partial least squares directions
 <div style="width:50px; height=30px">
-![Figure 4: the cross-validation errors in terms of the number of principal components used](../../images/plsr-cv-ncomp.png)
+![Figure 4: the cross-validation errors in terms of the number of principal components used](../images/plsr-cv-ncomp.png)
 </div>
 Figure 4: The cross-validation errors in terms of the number of partial least squares directions
 
