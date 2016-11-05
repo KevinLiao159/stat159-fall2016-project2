@@ -31,7 +31,7 @@ pcr_coef_vector <- c(0, pcr_coef[1:11])
 plsr_coef_vector <- c(0, plsr_coef[1:11])
 
 # Create a table of regression coefficients for all methods
-table_coef <- data.frame("OSL" = osl_coef_vector, "Ridge" = ridge_coef_vector, 
+table_coef <- data.frame("OLS" = osl_coef_vector, "Ridge" = ridge_coef_vector, 
                          "Lasso" = lasso_coef_vector, "PCR" = pcr_coef_vector,
                          "PLSR" = plsr_coef_vector)
 rownames(table_coef) <- rownames(ridge_coef)
