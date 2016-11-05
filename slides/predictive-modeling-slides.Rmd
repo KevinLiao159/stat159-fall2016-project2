@@ -154,7 +154,7 @@ ggplot(plot_table_coef, aes(x = Predictors, y=value, group = Methods, colour = M
 ```{r, echo=FALSE, results='asis', message=FALSE}
 # Create table of test MSE
 table_mse <- data.frame("Ridge" = ridge_test_mse,
-                        "Rasso" = lasso_test_mse,
+                        "Lasso" = lasso_test_mse,
                         "PCR" = pcr_test_mse,
                         "PLSR" = plsr_test_mse)
 rownames(table_mse) <- "MSE Value"
