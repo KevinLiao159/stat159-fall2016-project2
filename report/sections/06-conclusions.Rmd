@@ -1,8 +1,13 @@
 
 ## Conclusions
-After we explore the credit data, we are interested in learning relationship of Balance and the other 10 predictors. First, we have fitted a OLS model upon all of 10 predictors in credit data so that we could get more insight about the information hidden behind the data. And the summary statistics served as our benchmark. Next step is model selection. We will pick the best models according to test Mean Square Error. Two shrinkage methods (ridge regression and lasso regression) and two dimension reduction methods (principal component regression and partial least square regression). When we conducted our analysis, we would like to see test MSE improve each time. However, the test MSE from all 5 different methods are competitive with each other. Ridge regression method acchieved the lowest test MSE and is considered the best model among the other four methods.
+From the credit data, we wanted to learn the relationship of Balance and the other 10 predictors. First, we fitted an OLS model upon *Credit* so that we could get more insight about the information hidden behind the data. And the summary statistics served as our benchmark. Then, after some pre-model data processing, we looked to pick the best models according to test Mean Square Error, two shrinkage methods (ridge and lasso) and two dimension reduction methods (PCR and PLSR). We hoped that every additional method we used would lower the MSE. However, the test MSE from all 4 different methods were competitive with each other. The ridge regression method achieved the lowest test MSE and is thus considered the "best model" among the four methods. 
 
-\vspace{20mm}
+Using the estimated coefficients from ridge regression, we find that strong predictors of credit balance include income, credit rating, credit limit, and student status. Meanwhile, number of cards, age, education, gender, marital status, and ethnicity are relatively weak predictors. Compared to the OLS coefficients, ridge regression appears to emphasize the effect of credit rating on balance more while emphasizing the effect of credit limit less. 
+
+Despite having a slightly higher MSE, lasso regression has the advantage of being the easiest of the models to interpret. It sets education, gender, marital status, and ethnicity coefficient to exactly zero, which is useful because it reduces the number of predictors to consider.
+
+The low MSE implies that our results may be useful for predictive purposes. The results suggest that increasing credit limit and rating will increase balance, while increasing income will lower credit balance. And, if the individual is a student, their balance is estimated to be lower.
+
 
 ## References
 James, Gareth, Daniela Witten, Trevor Hastie, and Robert Tibshirani. An Introduction to Statistical Learning: With Applications in R. New York: Springer, 2013. Print.
